@@ -9,15 +9,20 @@ To run:
 [https://huggingface.co/pyannote/speaker-diarization-3.1
 ](https://huggingface.co/pyannote/speaker-diarization-3.1
 )
+
+-Generate a hugging face token with read access to your gated repos, open hf-token.txt, delete the filler text, and save your token as the only thing in the file. 
+
 - make a folder called "audio_input" and save your audio file there
 
 - Adjust file paths as nessecary, and then run the following docker command. The command below assumes you saved this repo in your home folder.
-- 
+
+  ```
   sudo docker run --gpus all --rm --name dear-diary \
-  -v "/home/YOURUSERNAME/transcribber/audio_input:/app/audio_input" \
-  -v "/home/YOURUSERNAME/transcribber/transcripts_output:/app/transcripts_output" \
-  -v "/home/YOURUSERNAME/transcribber//hf-token.txt:/app/hf-token.txt" \
+  -v "/home/YOURUSERNAME/transcriber2/audio_input:/app/audio_input" \
+  -v "/home/YOURUSERNAME/transcriber2/transcripts_output:/app/transcripts_output" \
+  -v "/home/YOURUSERNAME/transcriber2//hf-token.txt:/app/hf-token.txt" \
   whispxpyan-image
+  ```
 
 Transcription happens on CPU due to some weird pytorch dependency errors I couldn't figure out that may have to do with the age of my particular GPU. Diarization uses CUDA. 
 
