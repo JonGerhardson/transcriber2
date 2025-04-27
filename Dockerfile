@@ -31,11 +31,11 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the main Python script into the container
-COPY whispxpyan.py .
+COPY whispxpyan_step4a_punct.py .
 
 # Define the default command to run when the container starts
 # This executes your Python script
-CMD ["python", "/app/whispxpyan.py"]
+ENTRYPOINT ["python", "/app/whispxpyan_step4a_punct.py"]
 
 # --- Notes on Running ---
 # Build the image:
@@ -56,4 +56,3 @@ CMD ["python", "/app/whispxpyan.py"]
 #     - /app/audio_input: Mount your audio files here
 #     - /app/transcripts_output: Output transcripts will be saved here
 #     - /app/hf-token.txt: Mount your Hugging Face token file here
-
